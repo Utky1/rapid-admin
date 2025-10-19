@@ -1,4 +1,10 @@
 #!/bin/bash
+# Normalize line endings (avoid CRLF issues)
+if file "$0" | grep -q CRLF; then
+    echo "[!] Converting line endings..."
+    dos2unix "$0" >/dev/null 2>&1 || true
+fi
+
 set -e
 
 APP_NAME="Rapid K1"
