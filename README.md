@@ -1,2 +1,10 @@
 # rapid-admin
 Admin submodule of RAPID K1 (Restful API Development Kali 1)
+
+***THIS SUBMODULE IS DEBIAN BASED*** (__But possibly can be reverted to windows in the new updates__)
+
+## Utility
+- Used for controlling RAPID K1 API
+  - Get (id | all)
+  - Remove (id | all)
+  - Patch (id) (__WIP__)
