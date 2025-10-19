@@ -8,3 +8,15 @@ Admin submodule of RAPID K1 (Restful API Development Kali 1)
   - Get (id | all)
   - Remove (id | all)
   - Patch (id) (__WIP__)
+
+# Installation
+
+## Debian
+```
+curl -sSL https://raw.githubusercontent.com/Utky1/rapid-admin/main/install.sh | sudo bash
+```
+
+## Windows
+- Latest version packages
+- admin.zip
+- Unpackage and run > admin.py
