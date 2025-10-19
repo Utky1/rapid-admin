@@ -20,3 +20,13 @@ curl -sSL https://raw.githubusercontent.com/Utky1/rapid-admin/main/install.sh | 
 - Latest version packages
 - admin.zip
 - Unpackage and run > admin.py
+
+# Uninstallation
+
+## Debian
+
+```
+curl -sSL https://raw.githubusercontent.com/Utky1/rapid-admin/main/install.sh | sudo bash -s -- --uninstall
+```
+
+> Uninstall on Windows is not supported. Just remove the unpackaged and zip files.
