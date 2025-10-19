@@ -24,12 +24,39 @@ echo_err(){  echo -e "${RED}[x]${NC} $1"; }
 
 # --- Uninstall mode ---
 if [[ "$1" == "--uninstall" ]]; then
-    echo_warn "Uninstalling $APP_NAME..."
-    rm -rf "$INSTALL_DIR" "$BIN_PATH" "$DESKTOP_PATH"
+    echo ""
+    echo "────────────────────────────────────────────"
+    echo "🧹  Rapid K1 Uninstaller"
+    echo "────────────────────────────────────────────"
+
+    FILES_TO_REMOVE=(
+        "$INSTALL_DIR"
+        "$BIN_PATH"
+        "$DESKTOP_PATH"
+    )
+
+    for f in "${FILES_TO_REMOVE[@]}"; do
+        if [ -e "$f" ]; then
+            echo "[*] Removing $f"
+            rm -rf "$f"
+        else
+            echo "[!] Skipping missing file: $f"
+        fi
+    done
+
+    echo ""
+    echo "[*] Refreshing desktop database..."
     update-desktop-database /usr/share/applications >/dev/null 2>&1 || true
-    echo_info "$APP_NAME successfully removed!"
+
+    echo ""
+    echo "✅ Rapid K1 has been fully uninstalled!"
+    echo ""
+    echo "If you installed via GitHub (curl), you can rerun it anytime:"
+    echo "  curl -sSL $REPO_URL/raw/$BRANCH/install.sh | sudo bash"
+    echo ""
     exit 0
 fi
+
 
 # --- Root check ---
 if [ "$EUID" -ne 0 ]; then
