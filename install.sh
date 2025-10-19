@@ -65,8 +65,12 @@ if [ ! -f "$SCRIPT_DIR/admin.py" ]; then
     echo_info "Fetching $APP_NAME from GitHub..."
     TMP_DIR=$(mktemp -d)
     curl -L "$REPO_URL/archive/refs/heads/$BRANCH.zip" -o "$TMP_DIR/repo.zip"
-    unzip -qq "$TMP_DIR/repo.zip" -d "$TMP_DIR"
-    SCRIPT_DIR="$TMP_DIR/RapidK1-Admin-$BRANCH"
+unzip -qq "$TMP_DIR/repo.zip" -d "$TMP_DIR"
+
+# Find the extracted folder automatically
+EXTRACTED_DIR=$(find "$TMP_DIR" -maxdepth 1 -type d -name "*-main" | head -n 1)
+SCRIPT_DIR="$EXTRACTED_DIR"
+
 fi
 
 # --- Prepare install directory ---
