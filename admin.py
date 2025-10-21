@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import os
 import requests
+import certifi
 import json
 
 
@@ -51,7 +52,7 @@ def get_admin_data():
     dataid = input("Enter Data ID (leave blank for all data): ").strip()
     url = f"{api_admin_url}/{dataid}" if dataid else api_admin_url
     auth = (ADMIN_USER, ADMIN_PASS)
-    response = requests.get(url, auth=auth)
+    response = requests.get(url, auth=auth, verify=certifi.where())
     if response.status_code == 200:
         return response.json()
     return {"error": "Failed to retrieve data", "status_code": response.status_code}
@@ -100,7 +101,7 @@ def delete_data():
 
     url = f"{api_admin_url}/{dataid}" if dataid else api_admin_url
     auth = (ADMIN_USER, ADMIN_PASS)
-    response = requests.delete(url, auth=auth)
+    response = requests.delete(url, auth=auth, verify=certifi.where())
     if response.status_code == 204:
         print("Admin data successfully deleted.")
     else:
